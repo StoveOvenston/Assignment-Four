@@ -15,6 +15,18 @@ void draw() {
   image(Background, 200,200);
   //Calls player object and then calls the display function inorder to show the player
   player.playerdisplay();
- 
+ // Calls the player movement function from the player class
+ player.playerMovement();
   
 }
+void keyPressed() {
+ if (key == 'd') {
+   playerMovingRight = true;
+}
+}
+void keyReleased() {
+  if (key == 'd') {
+    playerMovingRight = false;
+  }
+}
+    
