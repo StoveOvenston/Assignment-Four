@@ -37,6 +37,7 @@ void keyPressed() {
 }
 if (key == ' ') {
   playerJumping = true ;
+  maxHeight = playerPosition.y - jumpHeight;
 }
 }
 void keyReleased() {

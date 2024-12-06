@@ -4,12 +4,17 @@ boolean playerMovingRight = false;
 boolean playerMovingLeft = false;
 boolean playerFacingleft = false;
 boolean playerFacingright = true;
+// Booleans to dictate  if the player is jumping or not
 boolean playerJumping = false;
+boolean playerFalling = false;
 // declare PVectors
 PVector playerPosition;
 PVector playerVelocity;
 PVector playerAcc;
 PVector playerJumpForce;
+float jumpHeight; // How high I plan tomake the player jump
+float maxHeight; // And the MAX point the player can reach
+
  class Player {
    Player() {
      imageMode(CENTER);
@@ -22,6 +27,9 @@ PVector playerJumpForce;
    playerAcc = new PVector(0,5);
    //Now assign a variable for the force that the player will jump with
    playerJumpForce = new PVector(0,-16);
+   //Initialize the VARAIBLES RAHHHG
+   jumpHeight = 100;
+   maxHeight = playerPosition.y - jumpHeight;
    }
    void playerdisplay() {
     //displays image of player cowboy
@@ -38,11 +46,16 @@ PVector playerJumpForce;
     playerPosition.x = playerPosition.x - playerVelocity.x;
  }
  if (playerJumping == true) {
-   playerPosition.y = playerPosition.y + playerJumpForce.y;
-   playerJumpForce.y = playerJumpForce.y + playerAcc.y;
+   playerPosition.y = playerPosition.y - playerVelocity.y;
  }
-  else if(playerPosition.y >= 360) {
-  playerPosition.y = 360;
-}
+ if(playerFalling == true) {
+ playerPosition.y = playerPosition.y + playerVelocity.y;
+ //Code to determine if the player is falling
+ if(playerPosition.y >= maxHeight) {
+ playerJumping = false;
+ playerFalling = true;
  }
+ }
+ }
+ 
  }
