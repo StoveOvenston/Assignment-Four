@@ -11,16 +11,17 @@ boolean healthOne = false;
 boolean healthEmpty = false;
 //Declare class
 Player player; 
+Bullet bullet;
 //Create an array for the enemies
-Enemy[] enemies = new Enemy[8];
+Enemy[] enemies = new Enemy[10];
 void setup(){
   imageMode(CENTER);
   size(400,400);
   // Create objects
   player = new Player();  
-  
+  bullet = new Bullet();
   //Create a for loop for the enemy array
-  for (int i = 0; i< 8; i++) {
+  for (int i = 0; i< 10; i++) {
   enemies[i] = new Enemy();
 }
   // Use the image variable from earlier and assign it a file
@@ -37,6 +38,10 @@ void draw() {
   player.playerBounds();
      //Calls function  for all the player jump code
      player.playerJumping();
+     //Call bullet functions
+     bullet.drawBullet();
+     bullet.firing();
+     bullet.bulletDamage(enemies);
  //Call function to display enemies
  for (Enemy enemy: enemies) {
    enemy.enemyDisplay();
@@ -92,6 +97,20 @@ if (key == ' ') {
 }
 if (key == 'b') {
   setup();
+}
+if (key == ',') {
+bullet.isFiringRight = false;
+ bullet.isFiringLeft = true;
+// teleports bullet to player
+bullet.bulletX = player.playerPosition.x; 
+bullet.bulletY = player.playerPosition.y;
+}
+if (key == '.') {
+bullet.isFiringLeft = false;
+ bullet.isFiringRight = true;
+// teleports bullet to player
+bullet.bulletX = player.playerPosition.x; 
+bullet.bulletY = player.playerPosition.y;
 }
 }
 void keyReleased() {

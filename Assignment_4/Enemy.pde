@@ -16,7 +16,7 @@ class Enemy {
   rect(enemyPosition.x, enemyPosition.y, 20,20);
   if(enemyAlive == false) {
    noStroke();
-    enemyOpacity = 10;
+    enemyOpacity = 0;
     enemyPosition.x = 900;
   enemyPosition.y = 900;
   }
