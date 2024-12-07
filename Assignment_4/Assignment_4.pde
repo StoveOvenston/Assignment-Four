@@ -19,7 +19,10 @@ void draw() {
  //borders();
  // Calls the player movement function from the player class
  player.playerMovement();
-  
+  //Calls function to stop player from falling through the map
+  player.playerBounds();
+     player.playerJumping();
+ println(player.playerFalling);
 }
 //Create transparent rectangles that shows collision
 //void borders() {
@@ -30,22 +33,23 @@ void draw() {
 
 void keyPressed() {
  if (key == 'd') {
-   playerMovingRight = true;
+   player.playerMovingRight = true;
 }
  if (key == 'a') {
-   playerMovingLeft = true;
+   player.playerMovingLeft = true;
 }
 if (key == ' ') {
-  playerJumping = true ;
-  maxHeight = playerPosition.y - jumpHeight;
+  player.playerJumping = true;
+  println(player.playerJumping);
+//  jumpHeight = playerPosition.y + 100;
 }
 }
 void keyReleased() {
   if (key == 'd') {
-    playerMovingRight = false;
+    player.playerMovingRight = false;
   }
   if (key == 'a') {
-   playerMovingLeft = false;
+   player.playerMovingLeft = false;
 }
 }
     
