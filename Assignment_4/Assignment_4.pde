@@ -2,10 +2,12 @@
 PImage Background;
  int platformX = 30;
  int platformY = 220;
-int platformsW = 120;
+int platformsW = 100;
 int platformsH = 10;
 //Declare class
 Player player; 
+//Create an array for the enemies
+Enemy[] enemies = new Enemy[20]
 void setup(){
   imageMode(CENTER);
   size(400,400);
@@ -25,6 +27,8 @@ void draw() {
   player.playerBounds();
      //Calls function  for all the player jump code
      player.playerJumping();
+ //Call function to display enemies
+ enemy.
  //Code to draw all the platforms around the map for the player to jump in
   fill(100,45,11);
   rect(platformX, platformY, platformsW,platformsH);

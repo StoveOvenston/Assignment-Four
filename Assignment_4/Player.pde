@@ -94,7 +94,7 @@ playerFalling = true;
  }
  //Platform bounds
 //Chekcs if the player is within the x values of the playform, and the y value of it.
- if (playerPosition.x >= 30 && playerPosition.x <= 150 && playerPosition.y >= 110) { 
+ if (playerPosition.x >= 30 && playerPosition.x <= 130 && playerPosition.y >= 110) { 
    //This bit is specifically what makes it so that the player is able to go under the platform rather than being teleported over it 
    if (playerPosition.y >= platformY - 25 && playerPosition.y <= platformY) {
    playerFalling = false;
@@ -105,7 +105,7 @@ playerFalling = true;
     }  
   }
    //Platform 2 
-   if (playerPosition.x >= 220 && playerPosition.x <= 320 && playerPosition.y >= 110) { 
+   if (playerPosition.x >= 220 && playerPosition.x <= 350 && playerPosition.y >= 110) { 
    //This bit is specifically what makes it so that the player is able to go under the platform rather than being teleported over it 
    if (playerPosition.y >= platformY - 25 && playerPosition.y <= platformY) {
    playerFalling = false;
