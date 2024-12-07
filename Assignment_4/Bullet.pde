@@ -26,6 +26,7 @@ boolean isFiringLeft = false;
       if(dist(bulletX , bulletY,enemy.enemyPosition.x,enemy.enemyPosition.y)<=20 && enemy.enemyAlive == true) {
   background(255,255,0);
   enemy.enemyAlive = false;
+  points = points + 1;
 
     }
   }

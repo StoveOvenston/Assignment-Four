@@ -5,6 +5,7 @@ PImage Background;
 int platformsW = 100;
 int platformsH = 10;
 int playerHealth = 3;
+int points = 0;
 boolean healthFull = true;
 boolean healthHalf = false;
 boolean healthOne = false;
@@ -54,7 +55,6 @@ enemy.enemyDamage();
  }
  //Code to draw all the platforms around the map for the player to jump in
   fill(100,45,11);
-  rect(platformX, platformY, platformsW,platformsH);
   rect(platformX +220, platformY, platformsW,platformsH);
  
 
@@ -63,6 +63,10 @@ enemy.enemyDamage();
 if(player.playerAlive == false) {
 gameOver();
 }
+if(points == 10) {
+  win();
+}
+
 }
 void gameOver() {
   fill(0,0,0);
@@ -74,7 +78,15 @@ void gameOver() {
   text("Game Over. Press b to play again", width / 2, height / 2); 
 }
 
-
+void win() {
+  fill(0,0,0);
+  rect(0,0,400,400);
+ fill(255); 
+  //Set text size to 15 so that all the text fits on the screen
+  textSize(15); 
+  textAlign(CENTER, CENTER); 
+  text("You WIN! Press b to play again", width / 2, height / 2); 
+}
 
  
 
