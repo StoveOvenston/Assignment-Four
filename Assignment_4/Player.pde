@@ -2,6 +2,7 @@
  class Player {
  //Make the cool variables and initialize
 PImage CowboyStand;
+PImage CowboyStandLeft;
 boolean playerMovingRight = false;
 boolean playerMovingLeft = false;
 boolean playerFacingleft = false;
@@ -21,20 +22,29 @@ PVector playerJumpForce;
    Player() {
      imageMode(CENTER);
    //Get images for cowboy and subsequent animations
-   CowboyStand = loadImage("Cowboy Stand.png");
+   
+     CowboyStand = loadImage("Cowboy Stand.png");
+   
+
+      CowboyStandLeft = loadImage("Cowboy-left.png");
+    
    //Assign the PVectors values
    playerPosition = new PVector(100,350); 
-   playerVelocity = new PVector(4,8); // Initial Y velocity is 0
+   playerVelocity = new PVector(3,8);
    // Assign a value for the players accelleration (this will work as gravity)
-   playerAcc = new PVector(0,5);
-   //Now assign a variable for the force that the player will jump with
-  // playerJumpForce = new PVector(0,50);
+   playerAcc = new PVector(0,3);
+   
    //Initialize the VARAIBLES RAHHHG
   jumpHeight = playerPosition.y - 100;
    }
    void playerdisplay() {
     //displays image of player cowboy
+     if (playerFacingright == true) {
      image(CowboyStand, playerPosition.x, playerPosition.y);
+   }
+     if (playerFacingleft == true) {
+     image(CowboyStandLeft, playerPosition.x, playerPosition.y);
+     }
    }
 //Function to dictate what happens if the player is moving certain ways
  void playerMovement() {
@@ -82,6 +92,33 @@ playerFalling = true;
   if(playerPosition.x <= 0) {
    playerPosition.x = 0;
  }
+ //Platform bounds
+//Chekcs if the player is within the x values of the playform, and the y value of it.
+ if (playerPosition.x >= 30 && playerPosition.x <= 150 && playerPosition.y >= 110) { 
+   //This bit is specifically what makes it so that the player is able to go under the platform rather than being teleported over it 
+   if (playerPosition.y >= platformY - 25 && playerPosition.y <= platformY) {
+   playerFalling = false;
+   //Snaps the player on top of the platform
+   playerPosition.y = platformY-25;
+   //Sets Y velocity to zero so that they don't continue to fall 
+   playerVelocity.y = 0;
+    }  
+  }
+   //Platform 2 
+   if (playerPosition.x >= 220 && playerPosition.x <= 320 && playerPosition.y >= 110) { 
+   //This bit is specifically what makes it so that the player is able to go under the platform rather than being teleported over it 
+   if (playerPosition.y >= platformY - 25 && playerPosition.y <= platformY) {
+   playerFalling = false;
+   //Snaps the player on top of the platform
+   playerPosition.y = platformY-25;
+   //Sets Y velocity to zero so that they don't continue to fall 
+   playerVelocity.y = 0;
+    }  
+  }
  
  }
+ 
+ 
+
+
  }

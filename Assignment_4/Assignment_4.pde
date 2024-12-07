@@ -1,5 +1,9 @@
-// Declare variables
+// Declare and initialize variables
 PImage Background;
+ int platformX = 30;
+ int platformY = 220;
+int platformsW = 120;
+int platformsH = 10;
 //Declare class
 Player player; 
 void setup(){
@@ -15,28 +19,33 @@ void draw() {
   image(Background, 200,200);
   //Calls player object and then calls the display function inorder to show the player
   player.playerdisplay();
- //Calls function for borders
- //borders();
  // Calls the player movement function from the player class
  player.playerMovement();
   //Calls function to stop player from falling through the map
   player.playerBounds();
+     //Calls function  for all the player jump code
      player.playerJumping();
- println(player.playerFalling);
+ //Code to draw all the platforms around the map for the player to jump in
+  fill(100,45,11);
+  rect(platformX, platformY, platformsW,platformsH);
+  rect(platformX +220, platformY, platformsW,platformsH);
+  
 }
-//Create transparent rectangles that shows collision
-//void borders() {
- //fill(255,0,0);
-  //rect(0, 375, 1600, 50);
+;
 
  
 
 void keyPressed() {
  if (key == 'd') {
    player.playerMovingRight = true;
+   player.playerFacingleft = false;
+   player.playerFacingright = true;
 }
  if (key == 'a') {
    player.playerMovingLeft = true;
+   player.playerFacingright = false;
+   player.playerFacingleft = true;
+   
 }
 if (key == ' ') {
   player.playerJumping = true;
