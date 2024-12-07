@@ -7,12 +7,16 @@ int platformsH = 10;
 //Declare class
 Player player; 
 //Create an array for the enemies
-Enemy[] enemies = new Enemy[20]
+Enemy[] enemies = new Enemy[10];
 void setup(){
   imageMode(CENTER);
   size(400,400);
   // Create objects
   player = new Player();  
+  //Create a for loop for the enemy array
+  for (int i = 0; i< 10; i++) {
+  enemies[i] = new Enemy();
+}
   // Use the image variable from earlier and assign it a file
   Background = loadImage("WesternBackground.png");
 }
@@ -28,7 +32,15 @@ void draw() {
      //Calls function  for all the player jump code
      player.playerJumping();
  //Call function to display enemies
- enemy.
+ for (Enemy enemy: enemies) {
+   enemy.enemyDisplay();
+   //call chase function
+   // Update the enemy's position using the chase function PLEASE WOOOOOOOOOOORK 
+    enemy.enemyPosition.x = enemy.chase(enemy.enemyPosition.x, false, int(random(0, 100)));
+    enemy.enemyPosition.y = enemy.chase(enemy.enemyPosition.y, true, int(random(0, 100)));
+ }
+
+
  //Code to draw all the platforms around the map for the player to jump in
   fill(100,45,11);
   rect(platformX, platformY, platformsW,platformsH);

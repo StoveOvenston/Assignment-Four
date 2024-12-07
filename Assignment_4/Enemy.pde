@@ -3,10 +3,12 @@ class Enemy {
   PVector enemyPosition;
     PVector enemyVelocity;
     float enemyOpacity= 100;
+    // Boolean to make sure the enemy is alive
+    boolean  enemyAlive = true;
   Enemy() {
    // Initialize PVectors
     enemyPosition = new PVector(int(random(-50,450)), int(random(9,350))); 
-   enemyVelocity = new PVector(3,8);
+   enemyVelocity = new PVector(1,1);
     
   }
   void enemyDisplay() {
