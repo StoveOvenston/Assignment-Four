@@ -4,17 +4,23 @@ PImage Background;
  int platformY = 220;
 int platformsW = 100;
 int platformsH = 10;
+int playerHealth = 3;
+boolean healthFull = true;
+boolean healthHalf = false;
+boolean healthOne = false;
+boolean healthEmpty = false;
 //Declare class
 Player player; 
 //Create an array for the enemies
-Enemy[] enemies = new Enemy[10];
+Enemy[] enemies = new Enemy[8];
 void setup(){
   imageMode(CENTER);
   size(400,400);
   // Create objects
   player = new Player();  
+  
   //Create a for loop for the enemy array
-  for (int i = 0; i< 10; i++) {
+  for (int i = 0; i< 8; i++) {
   enemies[i] = new Enemy();
 }
   // Use the image variable from earlier and assign it a file
@@ -38,16 +44,32 @@ void draw() {
    // Update the enemy's position using the chase function PLEASE WOOOOOOOOOOORK 
     enemy.enemyPosition.x = enemy.chase(enemy.enemyPosition.x, false, int(random(0, 100)));
     enemy.enemyPosition.y = enemy.chase(enemy.enemyPosition.y, true, int(random(0, 100)));
+    //Calls function to talk about enemy damage 
+enemy.enemyDamage();
  }
-
-
  //Code to draw all the platforms around the map for the player to jump in
   fill(100,45,11);
   rect(platformX, platformY, platformsW,platformsH);
   rect(platformX +220, platformY, platformsW,platformsH);
-  
+ 
+
+
+//if the player is dead, make the gameover scree
+if(player.playerAlive == false) {
+gameOver();
 }
-;
+}
+void gameOver() {
+  fill(0,0,0);
+  rect(0,0,400,400);
+ fill(255); 
+  //Set text size to 15 so that all the text fits on the screen
+  textSize(15); 
+  textAlign(CENTER, CENTER); 
+  text("Game Over. Press b to play again", width / 2, height / 2); 
+}
+
+
 
  
 
@@ -67,6 +89,9 @@ if (key == ' ') {
   player.playerJumping = true;
   println(player.playerJumping);
 //  jumpHeight = playerPosition.y + 100;
+}
+if (key == 'b') {
+  setup();
 }
 }
 void keyReleased() {

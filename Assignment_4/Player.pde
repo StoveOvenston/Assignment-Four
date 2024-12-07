@@ -11,6 +11,8 @@ boolean playerFacingright = true;
 boolean playerJumping = false;
 boolean playerFalling = false;
 boolean landed = true;
+//Boolean for if the player is alive
+boolean playerAlive = true;
 
 float jumpHeight;  // And the MAX point the player can reach
 

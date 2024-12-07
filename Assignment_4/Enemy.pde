@@ -12,8 +12,14 @@ class Enemy {
     
   }
   void enemyDisplay() {
-  fill(0,0,0);
+  fill(0,0,0, enemyOpacity);
   rect(enemyPosition.x, enemyPosition.y, 20,20);
+  if(enemyAlive == false) {
+   noStroke();
+    enemyOpacity = 10;
+    enemyPosition.x = 900;
+  enemyPosition.y = 900;
+  }
   }
   // Function that will give the enemy the ability to chase the player using return
 float chase(float pos, boolean enemyVertical, int randomNum) {
@@ -37,5 +43,13 @@ float chase(float pos, boolean enemyVertical, int randomNum) {
     return(pos-enemyVelocity.x + randomMovementX);
     }
   }
+}
+void enemyDamage() {
+//if the enemy is alive amd touches the player flash red and set the palyer's alive boolean to false killing them
+  if (dist(enemyPosition.x , enemyPosition.y,player.playerPosition.x,player.playerPosition.y)<=20 && enemyAlive == true) {
+ 
+  background(255,0,0);
+ player.playerAlive = false;
+}
 }
 }
