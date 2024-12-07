@@ -1,4 +1,3 @@
 class Platforms {
-  Platforms() {
-    
+  
 }

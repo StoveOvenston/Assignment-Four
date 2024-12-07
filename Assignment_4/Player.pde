@@ -76,6 +76,12 @@ playerFalling = true;
    playerPosition.y = 350;
    playerVelocity.y = 0;
  }
+  if(playerPosition.x >= 390) {
+   playerPosition.x = 390;
+ }
+  if(playerPosition.x <= 0) {
+   playerPosition.x = 0;
  }
  
+ }
  }
